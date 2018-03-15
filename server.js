@@ -13,7 +13,7 @@ app.use((req, res, next) => { res.removeHeader('X-Powered-By'); next(); });
 
 // static routes
 app.use(routeStatic);
-app.use('/static', express.static(path.join(__dirname, baseDir), { etag: false, lastModified: false }));
+app.use('/static', express.static(path.join(__dirname, baseDir), { etag: false, maxAge: 31557600000 })); // Set cache to one year
 
 // dynamic pages
 app.use(redirectIndices);
