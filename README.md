@@ -16,3 +16,32 @@ Differences from actual Bootstrap documentation:
 - Install dependencies: `npm install`
 - Serve: `npm start`
 - Expose localhost: `npm run expose`
+
+
+## Performance
+<!-- `Async` and `defer` increases speed by approx. 100ms -->
+<!-- ```
+    <script defer src="/assets/js/vendor/jquery.min.js"></script>
+    <script async src="/dist/js/bootstrap.js"></script>
+    <script defer src="/assets/js/docs.min.js"></script>
+    <script defer src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+``` -->
+<!-- lazy loading images with intersection observer -->
+
+font display swap
+
+async css loading
+with loadCSS
+
+minified js, css
+
+service worker with caching
+
+critical css
+
+serve from CDN because if people cached that before performance ++
+
+add gzip
+
+header cache time
+[link](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)

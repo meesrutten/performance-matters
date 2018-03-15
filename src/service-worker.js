@@ -1,0 +1,43 @@
+const CACHE_STATIC_NAME = 'static-v5'
+const CACHE_DYNAMIC_NAME = 'dynamic-v5'
+self.addEventListener('install', (event) => {
+	event.waitUntil(caches.open(CACHE_STATIC_NAME)
+		.then((cache) => {
+			cache.addAll([
+				'/assets/*',
+				'/dist/*',
+				'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
+				'https://code.jquery.com/jquery-1.12.4.min.js'
+			])
+		}))
+})
+self.addEventListener('activate', (event) => {
+	console.log('[Service Worker] Activating Service Worker ....', event)
+	event.waitUntil(caches.keys()
+		.then(keyList => Promise.all(keyList.map((key) => {
+			if (key !== CACHE_STATIC_NAME && key !== CACHE_DYNAMIC_NAME) {
+				console.log('[Service Worker] Removing old cache.', key)
+				return caches.delete(key)
+			}
+		}))))
+	return self.clients.claim()
+})
+
+self.addEventListener('fetch', (event) => {
+	event.respondWith(caches.match(event.request)
+		.then((response) => {
+			if (response) {
+				return response
+			}
+			return fetch(event.request)
+				.then(res => caches.open(CACHE_DYNAMIC_NAME)
+					.then((cache) => {
+						cache.put(event.request.url, res.clone())
+						return res
+					}))
+				.catch((err) => {
+
+				})
+
+		}))
+})

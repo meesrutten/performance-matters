@@ -5,17 +5,21 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "expose": "ngrok http 3004"
+    "expose": "ngrok http 3004",
+    "build": "uglifyjs --compress src/assets/js/* src/dist/js/* -o src/_base/compressed/ & uglifycss src/assets/css/* src/dist/css/* > src/_base/compressed/ & nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "ngrok": "2.2.6",
-    "nodemon": "1.11.0"
+    "nodemon": "1.11.0",
+    "parallelshell": "^3.0.2"
   },
   "dependencies": {
     "body-parser": "1.15.2",
+    "compression": "^1.7.2",
     "express": "4.14.0",
+    "fg-loadcss": "^2.0.1",
     "nunjucks": "3.0.0"
   }
 }
