@@ -27,21 +27,33 @@ Differences from actual Bootstrap documentation:
     <script defer src="/assets/js/ie10-viewport-bug-workaround.js"></script>
 ``` -->
 <!-- lazy loading images with intersection observer -->
+### font display swap
+in branch `feature/fontswap`
 
-font display swap
 
-async css loading
+### async css loading
+in branch `feature/async-fonts`
 with loadCSS
 
-minified js, css
+### async js loading
+in branch `feature/async`
 
-service worker with caching
+### minified js, css
+in branch `feature/minify-and-bundle`
 
-critical css
+### service worker with caching
+in branch `feature/sw`
 
-serve from CDN because if people cached that before performance ++
+### critical css
+in branch `feature/criticalcss`
 
-add gzip
+### serve from CDN 
+in branch `feature/cdn`
+because if people cached that before performance ++
 
-header cache time
+### add gzip
+in branch `feature/gzip`
+
+### header cache time
+in branch `header-cache`
 [link](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)
